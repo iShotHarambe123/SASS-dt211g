@@ -1,0 +1,156 @@
+// Accentfärger för animationerna
+$accent: #5ddcff;
+$accent-2: #b45eff;
+
+// Neon text glow
+.neon-title {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  background: linear-gradient(90deg, $accent, $accent-2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: glow 4s ease-in-out infinite;
+  transition: filter 0.25s ease;
+
+  &:hover {
+    filter: drop-shadow(0 0 22px rgba($accent, .55))
+            drop-shadow(0 0 12px rgba($accent-2, .35));
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba($accent, .35), 0 0 30px rgba($accent-2, .25);
+  }
+  50% {
+    text-shadow: 0 0 18px rgba($accent, .6), 0 0 40px rgba($accent-2, .45);
+  }
+}
+
+// Rörlig planet
+.mover .sky {
+  position: relative;
+  overflow: hidden;
+  height: clamp(220px, 35vw, 340px);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #0b1222 0%, #0a1735 60%, #092142 100%);
+}
+
+.planet {
+  --size: 56px;
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffd8a8, #ff8b6b 60%, #ad2efe 100%);
+  animation: orbit 10s cubic-bezier(.65,.05,.36,1) infinite;
+}
+
+.sky:hover .planet {
+  animation-play-state: paused;
+}
+
+@keyframes orbit {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(35vw, -8vh) rotate(60deg); }
+  50%  { transform: translate(65vw, 2vh) rotate(120deg); }
+  75%  { transform: translate(90vw, -6vh) rotate(180deg); }
+  100% { transform: translate(110vw, -2vh) rotate(240deg); }
+}
+
+.buttons {
+  .btn-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+
+    @media (max-width: 760px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.btn {
+  appearance: none;
+  border: 0;
+  padding: .9rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  cursor: pointer;
+  color: #0b0f1a;
+  background: linear-gradient(135deg, $accent 0%, $accent-2 100%);
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0,0,0,.3);
+    filter: brightness(1.05);
+  }
+
+  &:active {
+    transform: translateY(0) scale(.98);
+    box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba($accent, .6);
+    outline-offset: 3px;
+  }
+}
+
+.fx-bounce:hover { animation: btn-bounce .6s ease; }
+@keyframes btn-bounce {
+  0%   { transform: translateY(-2px); }
+  30%  { transform: translateY(-6px); }
+  60%  { transform: translateY(-1px); }
+  100% { transform: translateY(-2px); }
+}
+
+.fx-wiggle:hover { animation: btn-wiggle .5s ease; }
+@keyframes btn-wiggle {
+  0%   { transform: rotate(0deg) translateY(-2px); }
+  25%  { transform: rotate(-3deg) translateY(-2px); }
+  50%  { transform: rotate(3deg) translateY(-2px); }
+  75%  { transform: rotate(-2deg) translateY(-2px); }
+  100% { transform: rotate(0deg) translateY(-2px); }
+}
+
+.fx-glow {
+  position: relative;
+  z-index: 0;
+
+  &:hover {
+    animation: none;
+    box-shadow:
+      0 0 0 6px rgba($accent, .18),
+      0 10px 26px rgba(0,0,0,.35);
+  }
+}
+
+// Konfetti
+.confetti-piece {
+  position: fixed;
+  width: 8px;
+  height: 12px;
+  border-radius: 2px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  animation: confetti-pop 700ms forwards ease-out;
+
+}
+
+@keyframes confetti-pop {
+  0%   { opacity: 1; transform: translate(var(--start-x, -50%), var(--start-y, -50%)) rotate(0turn) scale(1); }
+  70%  { opacity: 1; transform: translate(calc(var(--start-x, -50%) + var(--tx, 0px)),
+                                          calc(var(--start-y, -50%) + var(--ty, 0px)))
+                                          rotate(var(--rot, 1turn)) scale(1); }
+  100% { opacity: 0; transform: translate(calc(var(--start-x, -50%) + var(--tx, 0px)),
+                                          calc(var(--start-y, -50%) + var(--ty, 0px)))
+                                          rotate(var(--rot, 1.4turn)) scale(.9); }
+}
+

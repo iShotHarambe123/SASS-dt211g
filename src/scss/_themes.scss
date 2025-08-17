@@ -1,0 +1,14 @@
+@media (prefers-color-scheme: dark) {
+    .logo {color: $white ;}
+  body { background: $gray-800; color: lighten($white, 2%); }
+  .section-title, .caption { color: lighten($white, 18%); }
+  .site-footer { border-top: 1px solid lighten($gray-800, 10%); }
+  .card {
+    background: darken($gray-800, 0%); border-color: lighten($gray-800, 10%);
+    .card__price { color: lighten($white, 15%); }
+    .card__media--stack { background: lighten($gray-800, 8%); }
+  }
+ 
+}
+
+.logo__capsule { box-shadow: none; }

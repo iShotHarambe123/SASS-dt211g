@@ -1,0 +1,89 @@
+
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: saturate(180%) blur(8px);
+  background: rgba(255,255,255,.7);
+  border-bottom: 1px solid $gray-200;
+
+  @media (prefers-color-scheme: dark) {
+    background: rgba($gray-800, .7);
+    border-bottom-color: lighten($gray-800, 10%);
+  }
+}
+
+.nav-wrap { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: $space-4; padding: $space-3 0; }
+
+.logo {
+  text-decoration: none;
+  font-weight: 900;
+  letter-spacing: .02em;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: $black;
+
+  &__capsule {
+    display: inline;
+    background: none;
+    color: inherit;
+    border-radius: 0;
+    padding: 0;
+    width: auto; height: auto;
+    box-shadow: none;
+    text-transform: lowercase;
+  }
+}
+
+.main-nav {
+  grid-column: 3 / 4;
+  &__list {
+    display: flex; gap: $space-6; align-items: center;
+    li a { font-weight: 700; letter-spacing: .06em; font-size: .85rem; display:block; padding: $space-2 0; }
+    .is-active a { border-bottom: 2px solid currentColor; }
+  }
+}
+
+/* Mobile menu */
+.nav__toggle { display: none; }
+.nav__hamburger {
+  display: none; cursor: pointer; width: 28px; height: 24px; grid-column: 3 / 4;
+  span{ display:block; height:2px; margin:6px 0; background: currentColor; transition: transform .2s ease, opacity .2s ease; }
+  z-index: 999;
+}
+
+@include respond(tablet){
+  .main-nav__list{ gap: $space-4; }
+}
+@include respond(mobile) {
+  .nav__hamburger { display: block; }
+
+  .main-nav {
+    position: fixed;
+    top: 17px;    
+    right: 0;        
+    bottom: 0;
+    width: 260px;   
+    background: inherit;
+    border-left: 1px solid rgba(0,0,0,.08);
+    padding: 1rem;
+
+ 
+    display: none;
+  }
+
+  .nav__toggle:checked ~ .main-nav {
+    display: block;
+  }
+
+  .main-nav__list {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 $space-6;
+    background: $gray-800; color: lighten($white, 2%);
+  }
+
+
+  .nav__hamburger span { transition: none; }
+  .nav__toggle:checked + .nav__hamburger span:nth-child(1),
+  .nav__toggle:checked + .nav__hamburger span:nth-child(3) { transform: none; }
+  .nav__toggle:checked + .nav__hamburger span:nth-child(2) { opacity: 1; }
+}

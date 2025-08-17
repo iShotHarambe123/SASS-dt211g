@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Uppgift 4 - Animeringar</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./scss/main.scss" />
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="./images/favicon.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="./images/favicon.ico" sizes="any">
+</head>
+
+<body>
+    <a class="skiplink" href="#main">Hoppa till innehåll</a>
+
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a class="logo" href="./index.html">
+                <span class="logo__capsule">hannes</span>
+            </a>
+
+            <input type="checkbox" id="nav-toggle" class="nav__toggle" aria-label="Öppna meny">
+            <label for="nav-toggle" class="nav__hamburger" aria-hidden="true">
+                <span></span><span></span><span></span>
+            </label>
+
+            <nav class="main-nav">
+                <ul class="main-nav__list">
+                    <li><a href="./index.html">HEM</a></li>
+                    <li><a href="./sass.html">SASS</a></li>
+                    <li class="is-active"><a href="./animation.html">ANIMATIONER</a></li>
+                    <li><a href="./diagram.html">DIAGRAM</a></li>
+                    <li><a href="./map.html">MAP</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="anim-section glow" data-animate>
+            <h1 class="neon-title">LYSANDE NEON RUBRIK</h1>
+            <p>En pulserande texteffekt med <code>@keyframes</code>. För musen över rubriken för starkare glöd.</p>
+        </section>
+
+        <section class="anim-section mover" data-animate>
+            <h2>Rörligt objekt</h2>
+            <p>En planet rör sig över sidan. Hovra för att pausa.</p>
+            <div class="sky">
+                <div class="planet"></div>
+            </div>
+        </section>
+
+        <section class="anim-section buttons" data-animate>
+            <h2>Knappanimationer</h2>
+            <p>Hovra för effekter. Klicka på “Konfetti!” för en ytterligare överraskning!</p>
+
+            <div class="btn-row">
+                <button class="btn fx-bounce" type="button">Knapp 1</button>
+                <button class="btn fx-wiggle" type="button">Knapp 2</button>
+                <button class="btn fx-glow" id="confetti-btn" type="button">Konfetti!</button>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer container">
+        <p class="caption">&copy; 2025 hannes. All rights reserved.</p>
+        <a href="docs/">Docs</a>
+    </footer>
+
+    <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>

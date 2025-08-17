@@ -1,0 +1,37 @@
+@mixin container {
+  width: min(100% - 2rem, #{$container-max});
+  margin-inline: auto;
+}
+
+@mixin fluid-type($min, $max, $vw-min: 360px, $vw-max: 1400px) {
+  font-size: clamp(#{$min}, calc(#{$min} + (#{$max} - #{$min}) * ((100vw - #{$vw-min}) / (#{$vw-max} - #{$vw-min}))), #{$max});
+}
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  border-radius: .4rem;
+  padding: $space-3 $space-5;
+  border: 1px solid transparent;
+  transition: transform .06s ease, background-color .2s ease, color .2s ease, border-color .2s ease;
+  &:active { transform: translateY(1px); }
+}
+
+@mixin respond($break) {
+  @if $break == tablet {
+    @media (max-width: 900px) { @content; }
+  } @else if $break == mobile {
+    @media (max-width: 640px) { @content; }
+  }
+}
+
+%card-shell {
+  background: lighten($gray-200, 6%);
+  border-radius: $radius-2xl;
+  border: 1px solid $gray-200;
+  overflow: hidden;
+}

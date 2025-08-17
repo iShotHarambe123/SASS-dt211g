@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="sv">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Karta - hannes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./scss/main.scss" />
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="./images/favicon.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="./images/favicon.ico" sizes="any">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a class="logo" href="./index.html"><span class="logo__capsule">hannes</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav__toggle" aria-label="Öppna meny">
+            <label for="nav-toggle" class="nav__hamburger"><span></span><span></span><span></span></label>
+            <nav class="main-nav">
+                <ul class="main-nav__list">
+                    <li><a href="./index.html">HEM</a></li>
+                    <li><a href="./sass.html">SASS</a></li>
+                    <li><a href="./animation.html">ANIMATIONER</a></li>
+                    <li><a href="./diagram.html">DIAGRAM</a></li>
+                    <li class="is-active"><a href="./map.html">MAP</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" class="container">
+        <h1>Kartsök</h1>
+        <p class="caption">Sök en plats via eget formulär - resultatet visas med markör på kartan.</p>
+
+        <form id="placeSearch" class="map-search" autocomplete="off">
+            <label for="q">Plats</label>
+            <div class="map-search__row">
+                <input id="q" name="q" type="text" placeholder="t.ex. Sundsvall, campus" required />
+                <button class="btn btn--primary" type="submit">Sök</button>
+            </div>
+        </form>
+
+        <p id="map-status" class="sr-only" aria-live="polite"></p>
+
+        <div class="map-card">
+            <div id="map" class="map"></div>
+        </div>
+    </main>
+
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/map.js"></script>
+
+
+    <footer class="site-footer container">
+        <p class="caption">&copy; 2025 hannes. All rights reserved.</p>
+        <a href="docs/">Docs</a>
+    </footer>
+</body>
+
+</html>

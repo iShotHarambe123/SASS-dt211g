@@ -1,0 +1,54 @@
+:root {
+  color-scheme: light dark;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: $font-sans;
+  line-height: 1.5;
+  background: $paper;
+  color: $ink;
+}
+
+.container { @include container; }
+
+h1, h2, h3 { line-height: 1.1; font-weight: 800; letter-spacing: -.02em; }
+
+h1 { @include fluid-type(2.2rem, 4.25rem); margin: $space-7 0; }
+h2 { @include fluid-type(1rem, 1.2rem); margin: $space-6 0 $space-4; }
+h3 { font-size: 1rem; margin: $space-3 0 $space-2; }
+
+.section-title {
+  font-family: $font-mono;
+  letter-spacing: .06em;
+  font-weight: 600;
+  color: darken($ink, 10%);
+}
+
+.caption {
+  font-family: $font-mono;
+  font-size: .85rem;
+  color: darken($ink, 15%);
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; height: auto; }
+figure { margin: 0; }
+
+.skiplink {
+  position: absolute; left: -9999px; top: auto;
+  &:focus { left: $space-4; top: $space-4; background: $brand-red; color: $white; padding: $space-2 $space-3; }
+}
+
+.site-footer { padding: $space-7 0 $space-8; }
+
+.prose {
+  max-width: 70ch; padding-block: $space-8;
+  p, ul, li { font-size: 1.05rem; }
+  ul { padding-left: 1.2rem; }
+}

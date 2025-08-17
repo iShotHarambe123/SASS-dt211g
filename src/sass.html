@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="sv">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SASS - Utvärdering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./scss/main.scss" />
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="./images/favicon.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="./images/favicon.ico" sizes="any">
+</head>
+
+<body>
+    <a class="skiplink" href="#main">Hoppa till innehåll</a>
+
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a class="logo" href="./index.html">
+                <span class="logo__capsule">hannes</span>
+            </a>
+
+            <input type="checkbox" id="nav-toggle" class="nav__toggle" aria-label="Öppna meny">
+            <label for="nav-toggle" class="nav__hamburger" aria-hidden="true">
+                <span></span><span></span><span></span>
+            </label>
+
+            <nav class="main-nav">
+                <ul class="main-nav__list">
+                    <li><a href="./index.html">HEM</a></li>
+                    <li class="is-active"><a href="./sass.html">SASS</a></li>
+                    <li><a href="./animation.html">ANIMATIONER</a></li>
+                    <li><a href="./diagram.html">DIAGRAM</a></li>
+                    <li><a href="./map.html">MAP</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" class="container">
+        <h1>SASS - för- och nackdelar samt reflektion</h1>
+        <p>SASS (SCSS-syntax) gjorde det enklare att strukturera stilmallar med variabler, mixins, partials och
+            <em>nesting</em>. Att sätta upp ett färgsystem för både ljust och mörkt tema gick snabbt med
+            variabler och färgfunktioner.
+        </p>
+
+        <h2>Fördelar</h2>
+        <ul>
+            <li>Variabler för färger, spacing och typsnitt ger konsekvent design.</li>
+            <li>Mixins och funktioner minskar upprepning och underlättar responsivitet.</li>
+            <li>Partials och moduler gör koden mer underhållbar i större projekt.</li>
+            <li>Nesting förbättrar läsbarhet när komponenter byggs.</li>
+        </ul>
+
+        <h2>Nackdelar</h2>
+        <ul>
+            <li>Byggsteg krävs (t.ex. Parcel), vilket adderar verktygskedja och potentiella fel.</li>
+            <li>Överanvänd nesting kan generera tunga selektorer.</li>
+            <li>När många variabler och mixins används behövs dokumentation.</li>
+        </ul>
+
+        <h2>Att börja med en preprocessor</h2>
+        <p>Starten var smidig: skapa partials (<code>_variables.scss</code>, <code>_mixins.scss</code> osv) och
+            importera i <code>main.scss</code>. Breakpoint-mixins och knappar blev mest värdefulla. Helhetsintrycket:
+            snabbare iteration, renare kod och bättre skalbarhet.</p>
+    </main>
+
+    <footer class="site-footer container">
+        <p class="caption">&copy; 2025 hannes. All rights reserved.</p>
+        <a href="docs/">Docs</a>
+    </footer>
+</body>
+
+</html>

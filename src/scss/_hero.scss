@@ -1,0 +1,27 @@
+.hero {
+  padding-block: $space-8 $space-7;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: $grid-gap;
+
+  .hero__copy { padding-top: $space-6; }
+  .hero__aside {
+    display: grid; align-content: start; gap: $space-4;
+    .btn { justify-self: start; }
+  }
+
+  @include respond(tablet){
+    grid-template-columns: 1fr; gap: $space-6;
+    .hero__copy{ padding-top: 0; }
+  }
+}
+
+.btn { @include button-base; }
+.btn--primary {
+  background: $black; color: $white; border-color: $black;
+  &:hover { background: lighten($black, 12%); }
+  @media (prefers-color-scheme: dark) {
+    background: lighten($white, 0%); color: $black; border-color: lighten($white, 0%);
+    &:hover { background: darken($white, 8%); }
+  }
+}

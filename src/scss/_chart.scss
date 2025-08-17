@@ -1,0 +1,80 @@
+
+.charts-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  margin-block: 1rem 2rem;
+
+  justify-content: center;
+  max-width: 1200px;
+  margin-inline: auto;
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.chart-card {
+  background: var(--card-bg, #fff);
+  border-radius: var(--radius-xl, 1rem);
+  box-shadow: var(--shadow-elev-2, 0 10px 20px rgba(0, 0, 0, .06));
+  padding: clamp(.875rem, 1vw + .5rem, 1.25rem);
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  outline: 1px solid var(--card-border, rgba(0,0,0,.06));
+
+
+  width: 100%;
+  max-width: 540px;
+
+  h2 {
+    margin: 0 0 .5rem 0;
+    font-size: clamp(1rem, 1vw + .8rem, 1.25rem);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+}
+
+
+.chart-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  height: 100%;
+  min-height: 260px;
+  aspect-ratio: 16 / 10;
+
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+.caption {
+  color: var(--text-secondary, #555);
+  font-size: .95rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .chart-card {
+    background: var(--card-bg-dark, #0f1115);
+    outline-color: var(--card-border-dark, rgba(255,255,255,.06));
+    box-shadow: var(--shadow-elev-2-dark, 0 10px 24px rgba(0,0,0,.5));
+  }
+
+  .caption {
+    color: var(--text-secondary-dark, #bbb);
+  }
+}
